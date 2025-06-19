@@ -5,44 +5,65 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../constant/app_assets.dart';
 import '../../constant/app_color.dart';
 
-class Enquiriesoverview extends StatefulWidget {
-  const Enquiriesoverview({super.key});
+class Estimateoverviewscreen extends StatefulWidget {
+  const Estimateoverviewscreen({super.key});
 
   @override
-  State<Enquiriesoverview> createState() => _EnquiriesoverviewState();
+  State<Estimateoverviewscreen> createState() => _EstimateoverviewscreenState();
 }
 
-class _EnquiriesoverviewState extends State<Enquiriesoverview> {
-  List<Map<String, String>> enqurieinfo = [
-    {"left": "Name", "right": ""},
-    {"left": "Sales Stage", "right": ""},
+class _EstimateoverviewscreenState extends State<Estimateoverviewscreen> {
+  List<Map<String, String>> estimateinfo = [
+    {"left": "Estimate #", "right": ""},
+    {"left": "Estimate Date", "right": ""},
     {"left": "Customer", "right": ""},
-    {"left": "Probability (%)", "right": ""},
+    {"left": "Expiration Date", "right": ""},
     {"left": "Contact", "right": ""},
     {"left": "Type", "right": ""},
-    {"left": "Lead Source ", "right": ""},
     {"left": "PDF Template", "right": ""},
-    {"left": "Close Date", "right": ""},
-    {"left": "Next Step", "right": ""},
-    {"left": "Assigned To", "right": ""},
-    {"left": "Amount", "right": ""},
-    {"left": "Campaign", "right": ""},
-    {"left": "Description", "right": ""},
-    {"left": "Follow up Date", "right": ""},
+    {"left": "Payment Term", "right": ""},
+    {"left": "Currency", "right": ""},
+    {"left": "Status", "right": ""},
+    {"left": "Discount", "right": ""},
+    {"left": "Billing Address", "right": ""},
+    {"left": "Shipping Address", "right": ""},
+    {"left": "Email id", "right": ""},
+    {"left": "Mobile Number", "right": "98847487"},
+    {"left": "Notes to Customer", "right": ""},
+    {"left": "Cover Page", "right": ""},
+    {"left": "Terms & Condition", "right": ""},
     {"left": "Created By", "right": ""},
     {"left": "Modified By", "right": ""},
     {"left": "Created On", "right": ""},
     {"left": "Modified On", "right": ""},
-    {"left": "Last Contacted", "right": ""},
-    {"left": "Email Sequence", "right": ""},
   ];
 
-  List<Map<String, String>> companyinfo = [
-    {"left": "Market", "right": ""},
-    {"left": "Segment", "right": ""},
-    {"left": "Territory", "right": ""},
+  List<Map<String, String>> serviceinfo = [
+    {"left": "Task Name", "right": ""},
+    {"left": "Hours", "right": ""},
+    {"left": "Rate", "right": ""},
+    {"left": "Tax Code", "right": ""},
+    {"left": "Amount", "right": ""},
   ];
-
+  List<Map<String, String>> summaryinfo = [
+    {"left": "Sub Total", "right": ""},
+    {"left": "Discount", "right": ""},
+    {"left": "Tax", "right": ""},
+    {"left": "Shipping & Handling", "right": ""},
+    {"left": "Total", "right": ""},
+  ];
+  
+  //Call
+  void _makePhoneCall(String phoneNumber) async {
+    final Uri url = Uri(scheme: 'tel', path: phoneNumber);
+    try {
+      if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+        throw 'Could not launch $url';
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +82,7 @@ class _EnquiriesoverviewState extends State<Enquiriesoverview> {
           ),
         ),
         title: Text(
-          "Subburaj Overview",
+          "EST-0001 Overview",
           style: TextStyle(
             color: AppColor.mainColor,
             fontSize: 20,
@@ -90,7 +111,7 @@ class _EnquiriesoverviewState extends State<Enquiriesoverview> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(
-                "Enquiry Information",
+                "Estimate Details",
                 style: TextStyle(
                   color: AppColor.mainColor,
                   fontSize: 18,
@@ -102,7 +123,7 @@ class _EnquiriesoverviewState extends State<Enquiriesoverview> {
             ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
-              itemCount: enqurieinfo.length,
+              itemCount: estimateinfo.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 1),
@@ -114,7 +135,90 @@ class _EnquiriesoverviewState extends State<Enquiriesoverview> {
                           padding: EdgeInsets.all(16),
                           decoration: BoxDecoration(color: AppColor.white),
                           child: Text(
-                            enqurieinfo[index]['left'] ?? '',
+                            estimateinfo[index]['left'] ?? '',
+                            style: TextStyle(
+                              color: AppColor.darker,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 3),
+                      Expanded(
+                        child: Container(
+                          padding: EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: AppColor.lightpurpule,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                estimateinfo[index]['right'] ?? '',
+                                style: TextStyle(
+                                  color: AppColor.primary,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
+                              ),
+                               if (estimateinfo[index]['right'] == '98847487')
+                                CircleAvatar(
+                                  radius: 16, 
+                                  backgroundColor: AppColor
+                                      .primary, 
+                                  child: IconButton(
+                                    icon: Icon(
+                                      Icons.call,
+                                      size: 18,
+                                      color: Colors.white,
+                                    ),
+                                    onPressed: () {
+                                      _makePhoneCall('98847487');
+                                    },
+                                  ),
+                                ),
+                            ],
+                          ),
+                          
+                        ),
+                      ),
+                            
+                    ],
+                  ),
+                );
+              },
+            ),
+            SizedBox(height: 16),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Text(
+                "Service Provided",
+                style: TextStyle(
+                  color: AppColor.mainColor,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+            SizedBox(height: 10),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: serviceinfo.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 1),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Container(
+                          padding: EdgeInsets.all(16),
+                          decoration: BoxDecoration(color: AppColor.white),
+                          child: Text(
+                            serviceinfo[index]['left'] ?? '',
                             style: TextStyle(
                               color: AppColor.darker,
                               fontWeight: FontWeight.bold,
@@ -131,7 +235,7 @@ class _EnquiriesoverviewState extends State<Enquiriesoverview> {
                             color: AppColor.lightpurpule,
                           ),
                           child: Text(
-                            enqurieinfo[index]['right'] ?? '',
+                            serviceinfo[index]['right'] ?? '',
                             style: TextStyle(
                               color: AppColor.primary,
                               fontWeight: FontWeight.bold,
@@ -150,7 +254,7 @@ class _EnquiriesoverviewState extends State<Enquiriesoverview> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(
-                "Company Information",
+                "Summary Section",
                 style: TextStyle(
                   color: AppColor.mainColor,
                   fontSize: 18,
@@ -162,7 +266,7 @@ class _EnquiriesoverviewState extends State<Enquiriesoverview> {
             ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
-              itemCount: companyinfo.length,
+              itemCount: serviceinfo.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 1),
@@ -174,7 +278,7 @@ class _EnquiriesoverviewState extends State<Enquiriesoverview> {
                           padding: EdgeInsets.all(16),
                           decoration: BoxDecoration(color: AppColor.white),
                           child: Text(
-                            companyinfo[index]['left'] ?? '',
+                            serviceinfo[index]['left'] ?? '',
                             style: TextStyle(
                               color: AppColor.darker,
                               fontWeight: FontWeight.bold,
@@ -191,7 +295,7 @@ class _EnquiriesoverviewState extends State<Enquiriesoverview> {
                             color: AppColor.lightpurpule,
                           ),
                           child: Text(
-                            companyinfo[index]['right'] ?? '',
+                            serviceinfo[index]['right'] ?? '',
                             style: TextStyle(
                               color: AppColor.primary,
                               fontWeight: FontWeight.bold,

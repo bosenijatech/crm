@@ -29,5 +29,5 @@ static const String email = 'assets/svgimages/email.svg';
 static const String logcall = 'assets/svgimages/logcall.svg';
 static const String edit = 'assets/svgimages/edit.svg';
 static const String convert = 'assets/svgimages/convert.svg';
-
+static const String print = 'assets/svgimages/print.svg';
 }

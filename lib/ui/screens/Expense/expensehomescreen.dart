@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'createexpensereportscreen.dart';
 import 'createexpensescreen.dart';
+import 'expenseoverviewscreen.dart';
 
 class Expensehomescreen extends StatefulWidget {
   const Expensehomescreen({super.key});
@@ -76,92 +77,99 @@ class _ExpensehomescreenState extends State<Expensehomescreen> {
              Padding(
                padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 8 ),
                child:
-                   Container(
-                    
-                     padding: EdgeInsets.all(16),
-                     decoration: BoxDecoration(
-                       color: Colors.white,
-                       borderRadius: BorderRadius.circular(12),
-                       boxShadow: [
-                         BoxShadow(
-                           color: Colors.black12,
-                           blurRadius: 4,
-                           offset: Offset(0, 2),
-                         )
-                       ],
-                     ),
-                     child: Column(
-                       children: [
-                         Row(
-                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                       
-                           children: [
-                             Row(
-                               children: [
-                                 CircleAvatar(
-                                   radius: 30,
-                                 backgroundColor: AppColor.primary,
-                                 ),
-                                 SizedBox(width: 12),
-                                 Column(
-                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                   children: [
-                                     Text(
-                                       "John Doe",
-                                       style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,color:AppColor.primary ),
-                                     ),
-                                     Text(
-                                       "Demo",
-                                       style: TextStyle(fontSize: 14, color: AppColor.grey),
-                                     ),
-                                   ],
-                                 ),
-                               
-                               ],
+                   GestureDetector(onTap: () {
+                      Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Expenseoverviewscreen()),
+            );
+                   },
+                     child: Container(
+                      
+                       padding: EdgeInsets.all(16),
+                       decoration: BoxDecoration(
+                         color: Colors.white,
+                         borderRadius: BorderRadius.circular(12),
+                         boxShadow: [
+                           BoxShadow(
+                             color: Colors.black12,
+                             blurRadius: 4,
+                             offset: Offset(0, 2),
+                           )
+                         ],
+                       ),
+                       child: Column(
+                         children: [
+                           Row(
+                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                         
+                             children: [
+                               Row(
+                                 children: [
+                                   CircleAvatar(
+                                     radius: 30,
+                                   backgroundColor: AppColor.primary,
+                                   ),
+                                   SizedBox(width: 12),
+                                   Column(
+                                     crossAxisAlignment: CrossAxisAlignment.start,
+                                     children: [
+                                       Text(
+                                         "John Doe",
+                                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,color:AppColor.primary ),
+                                       ),
+                                       Text(
+                                         "Demo",
+                                         style: TextStyle(fontSize: 14, color: AppColor.grey),
+                                       ),
+                                     ],
+                                   ),
+                                 
+                                 ],
+                               ),
+                                Row(
+                                    children: [
+                                           Container(
+                               padding: EdgeInsets.symmetric(horizontal: 14, vertical: 4),
+                               decoration: BoxDecoration(
+                                 color: AppColor.darkgreen,
+                                 borderRadius: BorderRadius.circular(20),
+                                
+                               ),
+                               child: Row(
+                                 mainAxisSize: MainAxisSize.min,
+                                 children: [
+                                   Text(
+                                     "Advertising",
+                                     style: TextStyle(color: Colors.white, fontSize: 14),
+                                   ),
+                                 
+                                 ],
+                               ),
                              ),
-                              Row(
-                                  children: [
-                                         Container(
-                             padding: EdgeInsets.symmetric(horizontal: 14, vertical: 4),
-                             decoration: BoxDecoration(
-                               color: AppColor.darkgreen,
-                               borderRadius: BorderRadius.circular(20),
-                              
-                             ),
-                             child: Row(
-                               mainAxisSize: MainAxisSize.min,
-                               children: [
-                                 Text(
-                                   "Advertising",
-                                   style: TextStyle(color: Colors.white, fontSize: 14),
-                                 ),
-                               
-                               ],
-                             ),
+                          
+                                    ],
+                                   )
+                             ],
                            ),
-                        
-                                  ],
-                                 )
-                           ],
-                         ),
-                         SizedBox(height: 20,),
-                          Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text('Created On',style: TextStyle(fontSize: 14),),
-                                        SizedBox(width: 20,),
-                                        Text('June 11, 2025 10:40:38 Am',style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold),),
-                                      ],
+                           SizedBox(height: 20,),
+                            Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Text('Created On',style: TextStyle(fontSize: 14),),
+                                          SizedBox(width: 20,),
+                                          Text('June 11, 2025 10:40:38 Am',style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold),),
+                                        ],
+                                      ),
+                     
+                                    
+                                    ],
+                                  )
+                         ],
+                       ),
+                                       
                                     ),
-
-                                  
-                                  ],
-                                )
-                       ],
-                     ),
-                  
-               ),
+                   ),
                
              );
            },

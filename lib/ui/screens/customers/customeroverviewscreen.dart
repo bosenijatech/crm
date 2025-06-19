@@ -1,46 +1,56 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../constant/app_assets.dart';
 import '../../constant/app_color.dart';
-import 'package:url_launcher/url_launcher.dart';
 
-class Leadoverviewscreen extends StatefulWidget {
-  const Leadoverviewscreen({super.key});
+class Customeroverviewscreen extends StatefulWidget {
+  const Customeroverviewscreen({super.key});
 
   @override
-  State<Leadoverviewscreen> createState() => _LeadoverviewscreenState();
+  State<Customeroverviewscreen> createState() => _CustomeroverviewscreenState();
 }
 
-class _LeadoverviewscreenState extends State<Leadoverviewscreen> {
-  List<Map<String, String>> leadinfo = [
-    {"left": "First Name", "right": ""},
-    {"left": "Last Name", "right": ""},
-    {"left": "Job Titile", "right": ""},
-    {"left": "Best Way To Contact", "right": ""},
-    {"left": "Lead Status", "right": ""},
-    {"left": "Lead Source", "right": ""},
-    {"left": "Type", "right": ""},
-    {"left": "Referred By", "right": ""},
-    {"left": "Assigned To", "right": ""},
+class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
+  List<Map<String, String>> customerinfo = [
+    {"left": "Name", "right": ""},
+    {"left": "Customer #", "right": ""},
+    {"left": "Category", "right": ""},
+    {"left": "Sales Rep.", "right": ""},
     {"left": "Description", "right": ""},
+    {"left": "Last Contacted", "right": ""},
+    {"left": "Status", "right": ""},
   ];
 
   List<Map<String, String>> contactinfo = [
-    {"left": "Phone (Business)", "right": "98847487"},
-    {"left": "Email (Business)", "right": ""},
+    {"left": "Phone", "right": "98847487"},
+    {"left": "Email", "right": ""},
     {"left": "Microsoft Teams", "right": ""},
     {"left": "Unsubscribe", "right": ""},
     {"left": "Bounced", "right": ""},
     {"left": "Bounced Reason", "right": ""},
   ];
+  List<Map<String, String>> Addressinfo = [
+    {"left": "Billing Address", "right": ""},
 
-  List<Map<String, String>> addinfo = [
-    {"left": "Potencial Amount", "right": ""},
-    {"left": "Estimate Close Date", "right": ""},
-    {"left": "Rank", "right": ""},
+  ];
+
+  List<Map<String, String>> additionalinfo = [
+    {"left": "Parent Customer", "right": ""},
+    {"left": "# of Employees", "right": ""},
+    {"left": "Price List", "right": ""},
+    {"left": "Website", "right": ""},
+    {"left": "Annual Revenue", "right": ""},
     {"left": "Campaign", "right": ""},
+    {"left": "Market", "right": ""},
+    {"left": "Segment", "right": ""},
     {"left": "Territory", "right": ""},
+    {"left": "Industry", "right": ""},
+    {"left": "Payment Term", "right": ""},
+    {"left": "Ownership", "right": ""},
+    {"left": "SLA", "right": ""},
+    {"left": "Affiliate", "right": ""},
     {"left": "Email Sequence", "right": ""},
     {"left": "Follow Up Date", "right": ""},
     {"left": "Follow Up Description", "right": ""},
@@ -49,20 +59,12 @@ class _LeadoverviewscreenState extends State<Leadoverviewscreen> {
     {"left": "Created On", "right": ""},
     {"left": "Modified On", "right": ""},
   ];
-  List<Map<String, String>> bussinfo = [
-    {"left": "Customer", "right": ""},
-    {"left": "Company", "right": ""},
-    {"left": "# of Employees", "right": ""},
-    {"left": "Annual Revenue", "right": ""},
-    {"left": "Industry", "right": ""},
-  ];
   List<Map<String, String>> socialinfo = [
     {"left": "Facebook", "right": ""},
     {"left": "Twitter", "right": ""},
     {"left": "Linkedin", "right": ""},
     {"left": "Website", "right": ""},
   ];
-
   //Call
   void _makePhoneCall(String phoneNumber) async {
     final Uri url = Uri(scheme: 'tel', path: phoneNumber);
@@ -74,7 +76,6 @@ class _LeadoverviewscreenState extends State<Leadoverviewscreen> {
       print(e);
     }
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -101,7 +102,16 @@ class _LeadoverviewscreenState extends State<Leadoverviewscreen> {
           ),
         ),
         actions: [
-
+          IconButton(
+            icon: SvgPicture.asset(
+              AppAssets.print, 
+              width: 24,
+              height: 24,
+            ),
+            onPressed: () {
+             
+            },
+          ),
           Builder(
             builder: (context) => IconButton(
               icon: SvgPicture.asset(
@@ -123,7 +133,7 @@ class _LeadoverviewscreenState extends State<Leadoverviewscreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(
-                "Lead Information",
+                "Customer Information",
                 style: TextStyle(
                   color: AppColor.mainColor,
                   fontSize: 18,
@@ -135,7 +145,7 @@ class _LeadoverviewscreenState extends State<Leadoverviewscreen> {
             ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
-              itemCount: leadinfo.length,
+              itemCount: customerinfo.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 1),
@@ -147,7 +157,7 @@ class _LeadoverviewscreenState extends State<Leadoverviewscreen> {
                           padding: EdgeInsets.all(16),
                           decoration: BoxDecoration(color: AppColor.white),
                           child: Text(
-                            leadinfo[index]['left'] ?? '',
+                            customerinfo[index]['left'] ?? '',
                             style: TextStyle(
                               color: AppColor.darker,
                               fontWeight: FontWeight.bold,
@@ -164,7 +174,7 @@ class _LeadoverviewscreenState extends State<Leadoverviewscreen> {
                             color: AppColor.lightpurpule,
                           ),
                           child: Text(
-                            leadinfo[index]['right'] ?? '',
+                            customerinfo[index]['right'] ?? '',
                             style: TextStyle(
                               color: AppColor.primary,
                               fontWeight: FontWeight.bold,
@@ -198,7 +208,8 @@ class _LeadoverviewscreenState extends State<Leadoverviewscreen> {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 1),
-                  child: Row(
+                  child: 
+                  Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Expanded(
@@ -222,8 +233,8 @@ class _LeadoverviewscreenState extends State<Leadoverviewscreen> {
                           decoration: BoxDecoration(
                             color: AppColor.lightpurpule,
                           ),
-                          child: 
-                          Row(
+                          child:
+                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
@@ -263,6 +274,65 @@ class _LeadoverviewscreenState extends State<Leadoverviewscreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(
+                "Address Information",
+                style: TextStyle(
+                  color: AppColor.mainColor,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+            SizedBox(height: 10),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: Addressinfo.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 1),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Container(
+                          padding: EdgeInsets.all(16),
+                          decoration: BoxDecoration(color: AppColor.white),
+                          child: Text(
+                            Addressinfo[index]['left'] ?? '',
+                            style: TextStyle(
+                              color: AppColor.darker,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 3),
+                      Expanded(
+                        child: Container(
+                          padding: EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: AppColor.lightpurpule,
+                          ),
+                          child: Text(
+                            Addressinfo[index]['right'] ?? '',
+                            style: TextStyle(
+                              color: AppColor.primary,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+            SizedBox(height: 16),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Text(
                 "Additional Information",
                 style: TextStyle(
                   color: AppColor.mainColor,
@@ -275,7 +345,7 @@ class _LeadoverviewscreenState extends State<Leadoverviewscreen> {
             ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
-              itemCount: addinfo.length,
+              itemCount: additionalinfo.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 1),
@@ -287,7 +357,7 @@ class _LeadoverviewscreenState extends State<Leadoverviewscreen> {
                           padding: EdgeInsets.all(16),
                           decoration: BoxDecoration(color: AppColor.white),
                           child: Text(
-                            addinfo[index]['left'] ?? '',
+                            additionalinfo[index]['left'] ?? '',
                             style: TextStyle(
                               color: AppColor.darker,
                               fontWeight: FontWeight.bold,
@@ -304,7 +374,7 @@ class _LeadoverviewscreenState extends State<Leadoverviewscreen> {
                             color: AppColor.lightpurpule,
                           ),
                           child: Text(
-                            addinfo[index]['right'] ?? '',
+                            additionalinfo[index]['right'] ?? '',
                             style: TextStyle(
                               color: AppColor.primary,
                               fontWeight: FontWeight.bold,
@@ -322,66 +392,7 @@ class _LeadoverviewscreenState extends State<Leadoverviewscreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(
-                "Business Details",
-                style: TextStyle(
-                  color: AppColor.mainColor,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ),
-            SizedBox(height: 10),
-            ListView.builder(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: bussinfo.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 1),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Container(
-                          padding: EdgeInsets.all(16),
-                          decoration: BoxDecoration(color: AppColor.white),
-                          child: Text(
-                            bussinfo[index]['left'] ?? '',
-                            style: TextStyle(
-                              color: AppColor.darker,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: 3),
-                      Expanded(
-                        child: Container(
-                          padding: EdgeInsets.all(16),
-                          decoration: BoxDecoration(
-                            color: AppColor.lightpurpule,
-                          ),
-                          child: Text(
-                            addinfo[index]['right'] ?? '',
-                            style: TextStyle(
-                              color: AppColor.primary,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                );
-              },
-            ),
-            SizedBox(height: 16),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
-                "Business Details",
+                "Social Information",
                 style: TextStyle(
                   color: AppColor.mainColor,
                   fontSize: 18,
