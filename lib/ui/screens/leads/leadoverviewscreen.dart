@@ -60,7 +60,7 @@ class _LeadoverviewscreenState extends State<Leadoverviewscreen> {
     {"left": "Facebook", "right": "Banana"},
     {"left": "Twitter", "right": "Bike"},
     {"left": "Linkedin", "right": "Cat"},
-    {"left": "Website", "right": "Pencil"},
+    {"left": "Website", "right": ""},
   ];
 
   @override
