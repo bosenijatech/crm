@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../constant/app_assets.dart';
 import '../../constant/app_color.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Leadoverviewscreen extends StatefulWidget {
   const Leadoverviewscreen({super.key});
@@ -13,55 +14,66 @@ class Leadoverviewscreen extends StatefulWidget {
 
 class _LeadoverviewscreenState extends State<Leadoverviewscreen> {
   List<Map<String, String>> leadinfo = [
-    {"left": "First Name", "right": "Banana"},
-    {"left": "Last Name", "right": "Bike"},
-    {"left": "Dog", "right": "Cat"},
-    {"left": "Job Titile", "right": "Pencil"},
-    {"left": "Best Way To Contact", "right": "Blue"},
-    {"left": "Lead Status", "right": "Moon"},
-    {"left": "Lead Source", "right": "Two"},
-    {"left": "Type", "right": "No"},
-    {"left": "Referred By", "right": "Cold"},
-    {"left": "Assigned To", "right": "Out"},
-    {"left": "Description", "right": "Out"},
+    {"left": "First Name", "right": ""},
+    {"left": "Last Name", "right": ""},
+    {"left": "Job Titile", "right": ""},
+    {"left": "Best Way To Contact", "right": ""},
+    {"left": "Lead Status", "right": ""},
+    {"left": "Lead Source", "right": ""},
+    {"left": "Type", "right": ""},
+    {"left": "Referred By", "right": ""},
+    {"left": "Assigned To", "right": ""},
+    {"left": "Description", "right": ""},
   ];
 
   List<Map<String, String>> contactinfo = [
-    {"left": "Phone (Business)", "right": "Banana"},
-    {"left": "Email (Business)", "right": "Bike"},
-    {"left": "Microsoft Teams", "right": "Cat"},
-    {"left": "Unsubscribe", "right": "Pencil"},
-    {"left": "Bounced", "right": "Blue"},
-    {"left": "Bounced Reason", "right": "Moon"},
+    {"left": "Phone (Business)", "right": "98847487"},
+    {"left": "Email (Business)", "right": ""},
+    {"left": "Microsoft Teams", "right": ""},
+    {"left": "Unsubscribe", "right": ""},
+    {"left": "Bounced", "right": ""},
+    {"left": "Bounced Reason", "right": ""},
   ];
 
   List<Map<String, String>> addinfo = [
-    {"left": "Potencial Amount", "right": "Banana"},
-    {"left": "Estimate Close Date", "right": "Bike"},
-    {"left": "Rank", "right": "Cat"},
-    {"left": "Campaign", "right": "Pencil"},
-    {"left": "Territory", "right": "Blue"},
-    {"left": "Email Sequence", "right": "Moon"},
-    {"left": "Follow Up Date", "right": "Two"},
-    {"left": "Follow Up Description", "right": "No"},
-    {"left": "Created By", "right": "Cold"},
-    {"left": "Modified By", "right": "Out"},
-    {"left": "Created On", "right": "Out"},
-    {"left": "Modified On", "right": "Out"},
+    {"left": "Potencial Amount", "right": ""},
+    {"left": "Estimate Close Date", "right": ""},
+    {"left": "Rank", "right": ""},
+    {"left": "Campaign", "right": ""},
+    {"left": "Territory", "right": ""},
+    {"left": "Email Sequence", "right": ""},
+    {"left": "Follow Up Date", "right": ""},
+    {"left": "Follow Up Description", "right": ""},
+    {"left": "Created By", "right": ""},
+    {"left": "Modified By", "right": ""},
+    {"left": "Created On", "right": ""},
+    {"left": "Modified On", "right": ""},
   ];
-  List<Map<String, String>> add1info = [
-    {"left": "Customer", "right": "Banana"},
-    {"left": "Company", "right": "Bike"},
-    {"left": "# of Employees", "right": "Cat"},
-    {"left": "Annual Revenue", "right": "Pencil"},
-    {"left": "Industry", "right": "Blue"},
+  List<Map<String, String>> bussinfo = [
+    {"left": "Customer", "right": ""},
+    {"left": "Company", "right": ""},
+    {"left": "# of Employees", "right": ""},
+    {"left": "Annual Revenue", "right": ""},
+    {"left": "Industry", "right": ""},
   ];
   List<Map<String, String>> socialinfo = [
-    {"left": "Facebook", "right": "Banana"},
-    {"left": "Twitter", "right": "Bike"},
-    {"left": "Linkedin", "right": "Cat"},
+    {"left": "Facebook", "right": ""},
+    {"left": "Twitter", "right": ""},
+    {"left": "Linkedin", "right": ""},
     {"left": "Website", "right": ""},
   ];
+
+  //Call
+  void _makePhoneCall(String phoneNumber) async {
+    final Uri url = Uri(scheme: 'tel', path: phoneNumber);
+    try {
+      if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+        throw 'Could not launch $url';
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,16 +101,18 @@ class _LeadoverviewscreenState extends State<Leadoverviewscreen> {
           ),
         ),
         actions: [
-          IconButton(
-            icon: SvgPicture.asset(
-              AppAssets.hamburger, // your SVG asset path
-              width: 18,
-              height: 18,
-            ),
-            onPressed: () {
-              // Handle dot menu tap
-            },
-          ),
+         Builder(
+    builder: (context) => IconButton(
+      icon: SvgPicture.asset(
+        AppAssets.hamburger,
+        width: 18,
+        height: 18,
+      ),
+      onPressed: () {
+        Scaffold.of(context).openEndDrawer();
+      },
+    ),
+  ),
         ],
       ),
       body: SingleChildScrollView(
@@ -207,13 +221,34 @@ class _LeadoverviewscreenState extends State<Leadoverviewscreen> {
                           decoration: BoxDecoration(
                             color: AppColor.lightpurpule,
                           ),
-                          child: Text(
-                            addinfo[index]['right'] ?? '',
-                            style: TextStyle(
-                              color: AppColor.primary,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                            ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                contactinfo[index]['right'].toString() ?? '',
+                                style: TextStyle(
+                                  color: AppColor.primary,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              if (contactinfo[index]['right'] == '98847487')
+                                CircleAvatar(
+                                  radius: 16, // size of the circle
+                                  backgroundColor: AppColor
+                                      .primary, // background circle color
+                                  child: IconButton(
+                                    icon: Icon(
+                                      Icons.call,
+                                      size: 18,
+                                      color: Colors.white,
+                                    ),
+                                    onPressed: () {
+                                      _makePhoneCall('98847487');
+                                    },
+                                  ),
+                                ),
+                            ],
                           ),
                         ),
                       ),
@@ -285,7 +320,7 @@ class _LeadoverviewscreenState extends State<Leadoverviewscreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(
-                "Additional Information",
+                "Business Details",
                 style: TextStyle(
                   color: AppColor.mainColor,
                   fontSize: 18,
@@ -297,7 +332,7 @@ class _LeadoverviewscreenState extends State<Leadoverviewscreen> {
             ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
-              itemCount: add1info.length,
+              itemCount: bussinfo.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 1),
@@ -309,7 +344,66 @@ class _LeadoverviewscreenState extends State<Leadoverviewscreen> {
                           padding: EdgeInsets.all(16),
                           decoration: BoxDecoration(color: AppColor.white),
                           child: Text(
-                            add1info[index]['left'] ?? '',
+                            bussinfo[index]['left'] ?? '',
+                            style: TextStyle(
+                              color: AppColor.darker,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 3),
+                      Expanded(
+                        child: Container(
+                          padding: EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: AppColor.lightpurpule,
+                          ),
+                          child: Text(
+                            addinfo[index]['right'] ?? '',
+                            style: TextStyle(
+                              color: AppColor.primary,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+            SizedBox(height: 16),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Text(
+                "Business Details",
+                style: TextStyle(
+                  color: AppColor.mainColor,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+            SizedBox(height: 10),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: socialinfo.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 1),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Container(
+                          padding: EdgeInsets.all(16),
+                          decoration: BoxDecoration(color: AppColor.white),
+                          child: Text(
+                            socialinfo[index]['left'] ?? '',
                             style: TextStyle(
                               color: AppColor.darker,
                               fontWeight: FontWeight.bold,
@@ -343,6 +437,121 @@ class _LeadoverviewscreenState extends State<Leadoverviewscreen> {
           ],
         ),
       ),
+      endDrawer: Drawer(
+  child: ListView(
+    children: [
+    const SizedBox(height: 100,),
+  ListTile(
+  leading: CircleAvatar(
+    backgroundColor: AppColor.primary,
+    radius: 20,
+    child: SvgPicture.asset(
+      AppAssets.edit, 
+      width: 20,
+      height: 20,
+    ),
+  ),
+  title: const Text('Edit',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+),
+SizedBox(height: 6,),
+  ListTile(
+  leading: CircleAvatar(
+    backgroundColor: AppColor.primary,
+    radius: 20,
+    child: SvgPicture.asset(
+      AppAssets.follow, 
+      width: 20,
+      height: 20,
+      color: Colors.white
+    ),
+  ),
+  title: const Text('Schedule Follow Up',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,),),
+),
+SizedBox(height: 6,),
+  ListTile(
+  leading: CircleAvatar(
+    backgroundColor: AppColor.primary,
+    radius: 20,
+    child: SvgPicture.asset(
+      AppAssets.addtask, 
+      width: 20,
+      height: 20,
+    ),
+  ),
+  title: const Text('Add Task',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+),
+SizedBox(height: 6,),
+  ListTile(
+  leading: CircleAvatar(
+    backgroundColor: AppColor.primary,
+    radius: 20,
+    child: SvgPicture.asset(
+      AppAssets.logcall, 
+      width: 20,
+      height: 20,
+    ),
+  ),
+  title: const Text('Log Call',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+),
+SizedBox(height: 6,),
+  ListTile(
+  leading: CircleAvatar(
+    backgroundColor: AppColor.primary,
+    radius: 20,
+    child: SvgPicture.asset(
+      AppAssets.convert, 
+      width: 20,
+      height: 20,
+    ),
+  ),
+  title: const Text('Convert',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+),
+SizedBox(height: 6,),
+  ListTile(
+  leading: CircleAvatar(
+    backgroundColor: AppColor.primary,
+    radius: 20,
+    child: SvgPicture.asset(
+      AppAssets.email, 
+      width: 20,
+      height: 20,
+         color: Colors.white
+    ),
+  ),
+  title: const Text('Send Emails',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+),
+SizedBox(height: 6,),
+  ListTile(
+  leading: CircleAvatar(
+    backgroundColor: AppColor.primary,
+    radius: 20,
+    child: SvgPicture.asset(
+      AppAssets.duplicate, 
+      width: 20,
+      height: 20,
+   
+    ),
+  ),
+  title: const Text('Duplicate',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+),
+SizedBox(height: 6,),
+  ListTile(
+  leading: CircleAvatar(
+    backgroundColor: AppColor.primary,
+    radius: 20,
+    child: SvgPicture.asset(
+      AppAssets.delete, 
+      width: 20,
+      height: 20,
+    ),
+  ),
+  title: const Text('Delete',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+),
+    
+    ],
+  ),
+),
+
     );
   }
 }

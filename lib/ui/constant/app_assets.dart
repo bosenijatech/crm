@@ -17,9 +17,17 @@ static const String fixedestimate = 'assets/svgimages/fixedestimate.svg';
 static const String anotherestimate = 'assets/svgimages/anotherestimate.svg';
 static const String calendar = 'assets/svgimages/calendar.svg';
 static const String calllogs = 'assets/svgimages/calllogs.svg';
-static const String emails = 'assets/svgimages/emails.svg';
+
 static const String follow = 'assets/svgimages/follow.svg';
 static const String tasks = 'assets/svgimages/tasks.svg';
 static const String workorder = 'assets/svgimages/workorder.svg';
 static const String hamburger = 'assets/svgimages/hamburger.svg';
+static const String addtask = 'assets/svgimages/addtask.svg';
+static const String delete = 'assets/svgimages/delete.svg';
+static const String duplicate = 'assets/svgimages/duplicate.svg';
+static const String email = 'assets/svgimages/email.svg';
+static const String logcall = 'assets/svgimages/logcall.svg';
+static const String edit = 'assets/svgimages/edit.svg';
+static const String convert = 'assets/svgimages/convert.svg';
+
 }

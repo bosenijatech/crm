@@ -93,7 +93,7 @@ class _DashboardState extends State<Dashboard>
     {"title": "Tasks", "icon": AppAssets.tasks, "screen": Taskhomescreen()},
     {"title": "Call Logs", "icon": AppAssets.calllogs, "screen": Callloghomescreen()},
     {"title": "My Follow Ups", "icon": AppAssets.follow, "screen": Followupshomescreen()},
-    {"title": "Emails", "icon": AppAssets.emails, "screen": null},
+    {"title": "Emails", "icon": AppAssets.email, "screen": null},
     {
       "title": "Estimate",
       "icon": AppAssets.estimate,
