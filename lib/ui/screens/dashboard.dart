@@ -15,7 +15,9 @@ import 'Expense/expensehomescreen.dart';
 import 'calender/callenderhomescreen.dart';
 import 'calllog/callloghomescreen.dart';
 import 'contact/contacthomescreen.dart';
+import 'email/emailscreen.dart';
 import 'followups/followupshomescreen.dart';
+import 'salesorder/salesorderoverviewscreen.dart';
 import 'setting/settingscreen.dart';
 import 'task/taskhomescreen.dart';
 
@@ -93,13 +95,13 @@ class _DashboardState extends State<Dashboard>
     {"title": "Tasks", "icon": AppAssets.tasks, "screen": Taskhomescreen()},
     {"title": "Call Logs", "icon": AppAssets.calllogs, "screen": Callloghomescreen()},
     {"title": "My Follow Ups", "icon": AppAssets.follow, "screen": Followupshomescreen()},
-    {"title": "Emails", "icon": AppAssets.email, "screen": null},
+    {"title": "Emails", "icon": AppAssets.email, "screen": Emailscreen()},
     {
       "title": "Estimate",
       "icon": AppAssets.estimate,
       "screen": Estimatehomescreen(),
     },
-    {"title": "Sales Order", "icon": AppAssets.order, "screen": null},
+    {"title": "Sales Order", "icon": AppAssets.order, "screen": Salesorderoverviewscreen()},
     {
       "title": "Expense Booking",
       "icon": AppAssets.expense,

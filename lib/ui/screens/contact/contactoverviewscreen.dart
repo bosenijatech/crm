@@ -5,53 +5,48 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../constant/app_assets.dart';
 import '../../constant/app_color.dart';
 
-class Customeroverviewscreen extends StatefulWidget {
-  const Customeroverviewscreen({super.key});
+class Contactoverviewscreen extends StatefulWidget {
+  const Contactoverviewscreen({super.key});
 
   @override
-  State<Customeroverviewscreen> createState() => _CustomeroverviewscreenState();
+  State<Contactoverviewscreen> createState() => _ContactoverviewscreenState();
 }
 
-class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
-  List<Map<String, String>> workorderinfo = [
-    {"left": "Name", "right": ""},
-    {"left": "Customer #", "right": ""},
-    {"left": "Category", "right": ""},
-    {"left": "Sales Rep.", "right": ""},
+class _ContactoverviewscreenState extends State<Contactoverviewscreen> {
+  List<Map<String, String>> contactdetails = [
+    {"left": "First Name", "right": ""},
+    {"left": "Last Name", "right": ""},
+    {"left": "Job Title", "right": ""},
+    {"left": "Customer", "right": ""},
+    {"left": "Supplier", "right": ""},
+    {"left": "Assigned To", "right": ""},
+    {"left": "Categories", "right": ""},
     {"left": "Description", "right": ""},
-    {"left": "Last Contacted", "right": ""},
     {"left": "Status", "right": ""},
+    {"left": "Last Contacted", "right": ""},
   ];
 
   List<Map<String, String>> contactinfo = [
     {"left": "Phone", "right": "98847487"},
-    {"left": "Email", "right": ""},
+    {"left": "Phone", "right": ""},
     {"left": "Microsoft Teams", "right": ""},
     {"left": "Unsubscribe", "right": ""},
     {"left": "Bounced", "right": ""},
     {"left": "Bounced Reason", "right": ""},
   ];
-  List<Map<String, String>> Addressinfo = [
-    {"left": "Billing Address", "right": ""},
 
+  List<Map<String, String>> addressinfo = [
+    {"left": "Billing Address", "right": ""},
   ];
 
-  List<Map<String, String>> additionalinfo = [
-    {"left": "Work Order #", "right": ""},
-    {"left": "Reported Date", "right": ""},
-    {"left": "Status", "right": ""},
-    {"left": "Template", "right": ""},
-    {"left": "Approver", "right": ""},
-    {"left": "Currency", "right": ""},
-    {"left": "Item Being Serviced", "right": ""},
-    {"left": "Discount", "right": ""},
-    {"left": "Assigned To", "right": ""},
-    {"left": "Sales Order", "right": ""},
-    {"left": "Case", "right": ""},
-    {"left": "Created By", "right": ""},
-    {"left": "SLA", "right": ""},
-    {"left": "Affiliate", "right": ""},
-    {"left": "Email Sequence", "right": ""},
+  List<Map<String, String>> addinfo = [
+    {"left": "Phonetic Name", "right": ""},
+    {"left": "Nick Name", "right": ""},
+    {"left": "Date of Birth", "right": ""},
+    {"left": "Market", "right": ""},
+    {"left": "Segment", "right": ""},
+    {"left": "Territory", "right": ""},
+    {"left": "Industry", "right": ""},
     {"left": "Follow Up Date", "right": ""},
     {"left": "Follow Up Description", "right": ""},
     {"left": "Created By", "right": ""},
@@ -59,13 +54,17 @@ class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
     {"left": "Created On", "right": ""},
     {"left": "Modified On", "right": ""},
   ];
-  
+  List<Map<String, String>> hobbyinfo = [
+    {"left": "Hobbies", "right": ""},
+    {"left": "Food", "right": ""},
+  ];
   List<Map<String, String>> socialinfo = [
     {"left": "Facebook", "right": ""},
     {"left": "Twitter", "right": ""},
     {"left": "Linkedin", "right": ""},
     {"left": "Website", "right": ""},
   ];
+
   //Call
   void _makePhoneCall(String phoneNumber) async {
     final Uri url = Uri(scheme: 'tel', path: phoneNumber);
@@ -77,6 +76,7 @@ class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
       print(e);
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -104,15 +104,10 @@ class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
         ),
         actions: [
           IconButton(
-            icon: SvgPicture.asset(
-              AppAssets.print, 
-              width: 24,
-              height: 24,
-            ),
-            onPressed: () {
-             
-            },
+            icon: SvgPicture.asset(AppAssets.print, width: 24, height: 24),
+            onPressed: () {},
           ),
+
           Builder(
             builder: (context) => IconButton(
               icon: SvgPicture.asset(
@@ -134,7 +129,7 @@ class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(
-                "Customer Information",
+                "Contact Details",
                 style: TextStyle(
                   color: AppColor.mainColor,
                   fontSize: 18,
@@ -146,7 +141,7 @@ class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
             ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
-              itemCount: workorderinfo.length,
+              itemCount: contactdetails.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 1),
@@ -158,7 +153,7 @@ class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
                           padding: EdgeInsets.all(16),
                           decoration: BoxDecoration(color: AppColor.white),
                           child: Text(
-                            workorderinfo[index]['left'] ?? '',
+                            contactdetails[index]['left'] ?? '',
                             style: TextStyle(
                               color: AppColor.darker,
                               fontWeight: FontWeight.bold,
@@ -175,7 +170,7 @@ class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
                             color: AppColor.lightpurpule,
                           ),
                           child: Text(
-                            workorderinfo[index]['right'] ?? '',
+                            contactdetails[index]['right'] ?? '',
                             style: TextStyle(
                               color: AppColor.primary,
                               fontWeight: FontWeight.bold,
@@ -209,8 +204,7 @@ class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 1),
-                  child: 
-                  Row(
+                  child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Expanded(
@@ -234,8 +228,7 @@ class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
                           decoration: BoxDecoration(
                             color: AppColor.lightpurpule,
                           ),
-                          child:
-                           Row(
+                          child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
@@ -287,7 +280,7 @@ class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
             ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
-              itemCount: Addressinfo.length,
+              itemCount: addressinfo.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 1),
@@ -299,7 +292,7 @@ class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
                           padding: EdgeInsets.all(16),
                           decoration: BoxDecoration(color: AppColor.white),
                           child: Text(
-                            Addressinfo[index]['left'] ?? '',
+                            addressinfo[index]['left'] ?? '',
                             style: TextStyle(
                               color: AppColor.darker,
                               fontWeight: FontWeight.bold,
@@ -316,7 +309,7 @@ class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
                             color: AppColor.lightpurpule,
                           ),
                           child: Text(
-                            Addressinfo[index]['right'] ?? '',
+                            addressinfo[index]['right'] ?? '',
                             style: TextStyle(
                               color: AppColor.primary,
                               fontWeight: FontWeight.bold,
@@ -346,7 +339,7 @@ class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
             ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
-              itemCount: additionalinfo.length,
+              itemCount: addinfo.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 1),
@@ -358,7 +351,7 @@ class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
                           padding: EdgeInsets.all(16),
                           decoration: BoxDecoration(color: AppColor.white),
                           child: Text(
-                            additionalinfo[index]['left'] ?? '',
+                            addinfo[index]['left'] ?? '',
                             style: TextStyle(
                               color: AppColor.darker,
                               fontWeight: FontWeight.bold,
@@ -375,7 +368,7 @@ class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
                             color: AppColor.lightpurpule,
                           ),
                           child: Text(
-                            additionalinfo[index]['right'] ?? '',
+                            addinfo[index]['right'] ?? '',
                             style: TextStyle(
                               color: AppColor.primary,
                               fontWeight: FontWeight.bold,
@@ -393,7 +386,66 @@ class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(
-                "Social Information",
+                "Contact Details",
+                style: TextStyle(
+                  color: AppColor.mainColor,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+            SizedBox(height: 10),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: hobbyinfo.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 1),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Container(
+                          padding: EdgeInsets.all(16),
+                          decoration: BoxDecoration(color: AppColor.white),
+                          child: Text(
+                            hobbyinfo[index]['left'] ?? '',
+                            style: TextStyle(
+                              color: AppColor.darker,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 3),
+                      Expanded(
+                        child: Container(
+                          padding: EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: AppColor.lightpurpule,
+                          ),
+                          child: Text(
+                            hobbyinfo[index]['right'] ?? '',
+                            style: TextStyle(
+                              color: AppColor.primary,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+            SizedBox(height: 16),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Text(
+                "Business Details",
                 style: TextStyle(
                   color: AppColor.mainColor,
                   fontSize: 18,

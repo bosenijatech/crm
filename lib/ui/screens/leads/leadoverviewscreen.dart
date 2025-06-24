@@ -363,7 +363,7 @@ class _LeadoverviewscreenState extends State<Leadoverviewscreen> {
                             color: AppColor.lightpurpule,
                           ),
                           child: Text(
-                            addinfo[index]['right'] ?? '',
+                            bussinfo[index]['right'] ?? '',
                             style: TextStyle(
                               color: AppColor.primary,
                               fontWeight: FontWeight.bold,

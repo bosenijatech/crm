@@ -72,14 +72,15 @@ class _CustomerhomescreenState extends State<Customerhomescreen> {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Customeroverviewscreen(),
-                  ),
-                );
-              },
+                onTap: () {
+                        
+              Navigator.push(               
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Customeroverviewscreen(),
+                ),
+              );
+            },
               child: Container(
                 padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
@@ -97,7 +98,7 @@ class _CustomerhomescreenState extends State<Customerhomescreen> {
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
+              
                       children: [
                         Row(
                           children: [

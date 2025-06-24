@@ -2,41 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+
+
 import '../../constant/app_assets.dart';
 import '../../constant/app_color.dart';
 
-class Customeroverviewscreen extends StatefulWidget {
-  const Customeroverviewscreen({super.key});
+class Workoderoverviewscreen extends StatefulWidget {
+  const Workoderoverviewscreen({super.key});
 
   @override
-  State<Customeroverviewscreen> createState() => _CustomeroverviewscreenState();
+  State<Workoderoverviewscreen> createState() => _WorkoderoverviewscreenState();
 }
 
-class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
-  List<Map<String, String>> workorderinfo = [
-    {"left": "Name", "right": ""},
-    {"left": "Customer #", "right": ""},
-    {"left": "Category", "right": ""},
-    {"left": "Sales Rep.", "right": ""},
-    {"left": "Description", "right": ""},
-    {"left": "Last Contacted", "right": ""},
-    {"left": "Status", "right": ""},
-  ];
-
-  List<Map<String, String>> contactinfo = [
-    {"left": "Phone", "right": "98847487"},
-    {"left": "Email", "right": ""},
-    {"left": "Microsoft Teams", "right": ""},
-    {"left": "Unsubscribe", "right": ""},
-    {"left": "Bounced", "right": ""},
-    {"left": "Bounced Reason", "right": ""},
-  ];
-  List<Map<String, String>> Addressinfo = [
-    {"left": "Billing Address", "right": ""},
-
-  ];
-
-  List<Map<String, String>> additionalinfo = [
+class _WorkoderoverviewscreenState extends State<Workoderoverviewscreen> {
+   List<Map<String, String>> workorderinfo = [
     {"left": "Work Order #", "right": ""},
     {"left": "Reported Date", "right": ""},
     {"left": "Status", "right": ""},
@@ -46,41 +25,47 @@ class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
     {"left": "Item Being Serviced", "right": ""},
     {"left": "Discount", "right": ""},
     {"left": "Assigned To", "right": ""},
-    {"left": "Sales Order", "right": ""},
     {"left": "Case", "right": ""},
-    {"left": "Created By", "right": ""},
-    {"left": "SLA", "right": ""},
-    {"left": "Affiliate", "right": ""},
-    {"left": "Email Sequence", "right": ""},
-    {"left": "Follow Up Date", "right": ""},
-    {"left": "Follow Up Description", "right": ""},
-    {"left": "Created By", "right": ""},
+    {"left": "Created Byr", "right": ""},
     {"left": "Modified By", "right": ""},
     {"left": "Created On", "right": ""},
     {"left": "Modified On", "right": ""},
   ];
-  
-  List<Map<String, String>> socialinfo = [
-    {"left": "Facebook", "right": ""},
-    {"left": "Twitter", "right": ""},
-    {"left": "Linkedin", "right": ""},
-    {"left": "Website", "right": ""},
+
+  List<Map<String, String>> customerinfo = [
+    {"left": "Customer", "right": "98847487"},
+    {"left": "Contact", "right": ""},
+    {"left": "Service Location", "right": ""},
+   
   ];
-  //Call
-  void _makePhoneCall(String phoneNumber) async {
-    final Uri url = Uri(scheme: 'tel', path: phoneNumber);
-    try {
-      if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
-        throw 'Could not launch $url';
-      }
-    } catch (e) {
-      print(e);
-    }
-  }
+
+  List<Map<String, String>> probleminfo = [
+ 
+    {"left": "Severity", "right": ""},
+    {"left": "Problem Code", "right": ""},
+    {"left": "Urgency", "right": ""},
+    {"left": "Problem Description", "right": ""},
+ 
+  ];
+  List<Map<String, String>> deliveryinfo = [
+    {"left": "Service Date", "right": ""},
+    {"left": "Service Start Time ", "right": ""},
+    {"left": "Service End Time", "right": ""},
+
+  ];
+  List<Map<String, String>> summaryinfo = [
+    {"left": "Sub Total", "right": ""},
+    {"left": "Discount", "right": ""},
+    {"left": "Tax", "right": ""},
+    {"left": "Shipping & Handling", "right": ""},
+    {"left": "Total", "right": ""},
+  ];
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.bgLight,
+       backgroundColor: AppColor.bgLight,
       appBar: AppBar(
         toolbarHeight: 120,
         elevation: 1,
@@ -95,7 +80,7 @@ class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
           ),
         ),
         title: Text(
-          "Subburaj Overview",
+          "W001 Overview",
           style: TextStyle(
             color: AppColor.mainColor,
             fontSize: 20,
@@ -103,16 +88,7 @@ class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
           ),
         ),
         actions: [
-          IconButton(
-            icon: SvgPicture.asset(
-              AppAssets.print, 
-              width: 24,
-              height: 24,
-            ),
-            onPressed: () {
-             
-            },
-          ),
+
           Builder(
             builder: (context) => IconButton(
               icon: SvgPicture.asset(
@@ -134,7 +110,7 @@ class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(
-                "Customer Information",
+                "Work Order Details",
                 style: TextStyle(
                   color: AppColor.mainColor,
                   fontSize: 18,
@@ -193,7 +169,7 @@ class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(
-                "Contact Information",
+                "Customer Information",
                 style: TextStyle(
                   color: AppColor.mainColor,
                   fontSize: 18,
@@ -205,89 +181,7 @@ class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
             ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
-              itemCount: contactinfo.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 1),
-                  child: 
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Container(
-                          padding: EdgeInsets.all(16),
-                          decoration: BoxDecoration(color: AppColor.white),
-                          child: Text(
-                            contactinfo[index]['left'] ?? '',
-                            style: TextStyle(
-                              color: AppColor.darker,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: 3),
-                      Expanded(
-                        child: Container(
-                          padding: EdgeInsets.all(16),
-                          decoration: BoxDecoration(
-                            color: AppColor.lightpurpule,
-                          ),
-                          child:
-                           Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                contactinfo[index]['right'].toString() ?? '',
-                                style: TextStyle(
-                                  color: AppColor.primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
-                              ),
-                              if (contactinfo[index]['right'] == '98847487')
-                                CircleAvatar(
-                                  radius: 16, // size of the circle
-                                  backgroundColor: AppColor
-                                      .primary, // background circle color
-                                  child: IconButton(
-                                    icon: Icon(
-                                      Icons.call,
-                                      size: 18,
-                                      color: Colors.white,
-                                    ),
-                                    onPressed: () {
-                                      _makePhoneCall('98847487');
-                                    },
-                                  ),
-                                ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                );
-              },
-            ),
-            SizedBox(height: 16),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
-                "Address Information",
-                style: TextStyle(
-                  color: AppColor.mainColor,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ),
-            SizedBox(height: 10),
-            ListView.builder(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: Addressinfo.length,
+              itemCount: customerinfo.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 1),
@@ -299,7 +193,7 @@ class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
                           padding: EdgeInsets.all(16),
                           decoration: BoxDecoration(color: AppColor.white),
                           child: Text(
-                            Addressinfo[index]['left'] ?? '',
+                            customerinfo[index]['left'] ?? '',
                             style: TextStyle(
                               color: AppColor.darker,
                               fontWeight: FontWeight.bold,
@@ -315,13 +209,20 @@ class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
                           decoration: BoxDecoration(
                             color: AppColor.lightpurpule,
                           ),
-                          child: Text(
-                            Addressinfo[index]['right'] ?? '',
-                            style: TextStyle(
-                              color: AppColor.primary,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                            ),
+                          child: 
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                customerinfo[index]['right'].toString() ?? '',
+                                style: TextStyle(
+                                  color: AppColor.primary,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
+                              ),
+                             
+                            ],
                           ),
                         ),
                       ),
@@ -346,7 +247,7 @@ class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
             ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
-              itemCount: additionalinfo.length,
+              itemCount: probleminfo.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 1),
@@ -358,7 +259,7 @@ class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
                           padding: EdgeInsets.all(16),
                           decoration: BoxDecoration(color: AppColor.white),
                           child: Text(
-                            additionalinfo[index]['left'] ?? '',
+                            probleminfo[index]['left'] ?? '',
                             style: TextStyle(
                               color: AppColor.darker,
                               fontWeight: FontWeight.bold,
@@ -375,7 +276,7 @@ class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
                             color: AppColor.lightpurpule,
                           ),
                           child: Text(
-                            additionalinfo[index]['right'] ?? '',
+                            probleminfo[index]['right'] ?? '',
                             style: TextStyle(
                               color: AppColor.primary,
                               fontWeight: FontWeight.bold,
@@ -393,7 +294,7 @@ class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(
-                "Social Information",
+                "Service Delivery Window",
                 style: TextStyle(
                   color: AppColor.mainColor,
                   fontSize: 18,
@@ -405,7 +306,7 @@ class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
             ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
-              itemCount: socialinfo.length,
+              itemCount: deliveryinfo.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 1),
@@ -417,7 +318,7 @@ class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
                           padding: EdgeInsets.all(16),
                           decoration: BoxDecoration(color: AppColor.white),
                           child: Text(
-                            socialinfo[index]['left'] ?? '',
+                            deliveryinfo[index]['left'] ?? '',
                             style: TextStyle(
                               color: AppColor.darker,
                               fontWeight: FontWeight.bold,
@@ -434,7 +335,66 @@ class _CustomeroverviewscreenState extends State<Customeroverviewscreen> {
                             color: AppColor.lightpurpule,
                           ),
                           child: Text(
-                            socialinfo[index]['right'] ?? '',
+                            deliveryinfo[index]['right'] ?? '',
+                            style: TextStyle(
+                              color: AppColor.primary,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+            SizedBox(height: 16),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Text(
+                "Summary Section",
+                style: TextStyle(
+                  color: AppColor.mainColor,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+            SizedBox(height: 10),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: summaryinfo.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 1),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Container(
+                          padding: EdgeInsets.all(16),
+                          decoration: BoxDecoration(color: AppColor.white),
+                          child: Text(
+                            summaryinfo[index]['left'] ?? '',
+                            style: TextStyle(
+                              color: AppColor.darker,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 3),
+                      Expanded(
+                        child: Container(
+                          padding: EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: AppColor.lightpurpule,
+                          ),
+                          child: Text(
+                            summaryinfo[index]['right'] ?? '',
                             style: TextStyle(
                               color: AppColor.primary,
                               fontWeight: FontWeight.bold,

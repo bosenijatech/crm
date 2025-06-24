@@ -30,4 +30,9 @@ static const String logcall = 'assets/svgimages/logcall.svg';
 static const String edit = 'assets/svgimages/edit.svg';
 static const String convert = 'assets/svgimages/convert.svg';
 static const String print = 'assets/svgimages/print.svg';
+static const String complete = 'assets/svgimages/complete.svg';
+static const String addnote = 'assets/svgimages/addnote.svg';
+static const String tag = 'assets/svgimages/tag.svg';
+static const String send = 'assets/svgimages/send.svg';
+static const String pin = 'assets/svgimages/pin.svg';
 }

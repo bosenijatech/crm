@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../constant/app_assets.dart';
 import '../../constant/app_color.dart';
+import 'cleanderoverviewscreen.dart';
 import 'createcalendaerscreen.dart';
 
 class Callenderhomescreen extends StatefulWidget {
@@ -78,102 +79,112 @@ class _CallenderhomescreenState extends State<Callenderhomescreen> {
              Padding(
                padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 8 ),
                child:
-                   Container(
-                    
-                     padding: EdgeInsets.all(16),
-                     decoration: BoxDecoration(
-                       color: Colors.white,
-                       borderRadius: BorderRadius.circular(12),
-                       boxShadow: [
-                         BoxShadow(
-                           color: Colors.black12,
-                           blurRadius: 4,
-                           offset: Offset(0, 2),
-                         )
-                       ],
-                     ),
-                     child: Column(
-                       children: [
-                         Row(
-                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                       
-                           children: [
-                             Row(
-                               children: [
-                                 CircleAvatar(
-                                   radius: 30,
-                                 backgroundColor: AppColor.primary,
-                                 ),
-                                 SizedBox(width: 12),
-                                 Column(
-                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                   children: [
-                                     Text(
-                                       "Event",
-                                       style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,color:AppColor.primary ),
-                                     ),
-                                     Text(
-                                       "Kovilpatti, 628502",
-                                       style: TextStyle(fontSize: 14, color: AppColor.grey),
-                                     ),
-                                     Text(
-                                       "Johan",
-                                       style: TextStyle(fontSize: 14, color: AppColor.grey),
-                                     ),
-                                   ],
-                                 ),
-                               
-                               ],
+                   GestureDetector(
+                    onTap: () {
+                         Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Cleanderoverviewscreen(),
+                  ),
+                );
+                    },
+                     child: Container(
+                      
+                       padding: EdgeInsets.all(16),
+                       decoration: BoxDecoration(
+                         color: Colors.white,
+                         borderRadius: BorderRadius.circular(12),
+                         boxShadow: [
+                           BoxShadow(
+                             color: Colors.black12,
+                             blurRadius: 4,
+                             offset: Offset(0, 2),
+                           )
+                         ],
+                       ),
+                       child: Column(
+                         children: [
+                           Row(
+                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                         
+                             children: [
+                               Row(
+                                 children: [
+                                   CircleAvatar(
+                                     radius: 30,
+                                   backgroundColor: AppColor.primary,
+                                   ),
+                                   SizedBox(width: 12),
+                                   Column(
+                                     crossAxisAlignment: CrossAxisAlignment.start,
+                                     children: [
+                                       Text(
+                                         "Event",
+                                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,color:AppColor.primary ),
+                                       ),
+                                       Text(
+                                         "Kovilpatti, 628502",
+                                         style: TextStyle(fontSize: 14, color: AppColor.grey),
+                                       ),
+                                       Text(
+                                         "Johan",
+                                         style: TextStyle(fontSize: 14, color: AppColor.grey),
+                                       ),
+                                     ],
+                                   ),
+                                 
+                                 ],
+                               ),
+                                Row(
+                                    children: [
+                                           Container(
+                               padding: EdgeInsets.symmetric(horizontal: 14, vertical: 4),
+                               decoration: BoxDecoration(
+                                 color: AppColor.darkgreen,
+                                 borderRadius: BorderRadius.circular(20),
+                                
+                               ),
+                               child: Row(
+                                 mainAxisSize: MainAxisSize.min,
+                                 children: [
+                                   Text(
+                                     "Not Started",
+                                     style: TextStyle(color: Colors.white, fontSize: 14),
+                                   ),
+                                 
+                                 ],
+                               ),
                              ),
-                              Row(
-                                  children: [
-                                         Container(
-                             padding: EdgeInsets.symmetric(horizontal: 14, vertical: 4),
-                             decoration: BoxDecoration(
-                               color: AppColor.darkgreen,
-                               borderRadius: BorderRadius.circular(20),
-                              
-                             ),
-                             child: Row(
-                               mainAxisSize: MainAxisSize.min,
-                               children: [
-                                 Text(
-                                   "Not Started",
-                                   style: TextStyle(color: Colors.white, fontSize: 14),
-                                 ),
-                               
-                               ],
-                             ),
+                           
+                                    ],
+                                   )
+                             ],
                            ),
-                         
-                                  ],
-                                 )
-                           ],
-                         ),
-                         SizedBox(height: 20,),
-                          Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text('Created On',style: TextStyle(fontSize: 14),),
-                                        SizedBox(width: 30,),
-                                        Text('June 11, 2025 10:40:38 Am',style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold),),
-                                      ],
+                           SizedBox(height: 20,),
+                            Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Text('Created On',style: TextStyle(fontSize: 14),),
+                                          SizedBox(width: 30,),
+                                          Text('June 11, 2025 10:40:38 Am',style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold),),
+                                        ],
+                                      ),
+                                   SizedBox(height: 8,),
+                                      Row(
+                                        children: [
+                                          Text('Modified On',style: TextStyle(fontSize: 14),),
+                                          SizedBox(width: 22,),
+                                          Text('June 11, 2025 10:40:38 Am',style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold),),
+                                        ],
+                                      )
+                                    ],
+                                  )
+                         ],
+                       ),
+                                       
                                     ),
-                                 SizedBox(height: 8,),
-                                    Row(
-                                      children: [
-                                        Text('Modified On',style: TextStyle(fontSize: 14),),
-                                        SizedBox(width: 22,),
-                                        Text('June 11, 2025 10:40:38 Am',style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold),),
-                                      ],
-                                    )
-                                  ],
-                                )
-                       ],
-                     ),
-                  
-               ),
+                   ),
                
              );
            },

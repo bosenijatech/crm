@@ -15,6 +15,8 @@ static const settingclr = Color(0xFFE3E7FD);
   static const  darkgreen = Color(0xFF008D26);
   static const  lightorange = Color(0xFFC19108);
   static const  lightpurpule =Color(0xFFD6DBF5);
+  static const  violet = Color(0xFF556DE4);
+
   
 
 

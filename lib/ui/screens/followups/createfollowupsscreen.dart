@@ -140,7 +140,6 @@ class _CreatefollowupsscreenState extends State<Createfollowupsscreen> {
     });
   }
 
-  
   //Assigned To
   Map<String, String> selectedSubassign = {};
   List<String> statuslist = [
@@ -151,12 +150,37 @@ class _CreatefollowupsscreenState extends State<Createfollowupsscreen> {
     'Scheduled',
   ];
   List<String> prioritylist = ['High', 'Medium', 'Low'];
-  List<String> mainassign = ["Employee", "Contact", "Team"];
+   List<String> mainassign = [
+    "Cases",
+    "Contacts",
+    "Customers",
+    "Estimates",
+    "Expense Reports",
+    "Invoices",
+    "Leads",
+    "Enquiries",
+    "Sales Order",
+    "Projects",
+    "Suppliers",
+    "Timesheets",
+    "Work Orders",
+  ];
   Map<String, List<String>> subassign = {
-    "Employee": ["Task 1", "Task 2"],
-    "Contact": ["Task 1", "Task 2"],
-    "Team": ["Task 1", "Task 2"],
+    "Cases": ["Task 1", "Task 2"],
+    "Contacts": ["Task 1", "Task 2"],
+    "Customers": ["Task 1", "Task 2"],
+    "Estimates": ["Task 1", "Task 2"],
+    "Expense Reports": ["Task 1", "Task 2"],
+    "Invoices": ["Task 1", "Task 2"],
+    "Leads": ["Task 1", "Task 2"],
+    "Enquiries": ["Task 1", "Task 2"],
+    "Sales Order": ["Task 1", "Task 2"],
+    "Projects": ["Task 1", "Task 2"],
+    "Suppliers": ["Task 1", "Task 2"],
+    "Timesheets": ["Task 1", "Task 2"],
+    "Work Orders": ["Task 1", "Task 2"],
   };
+
 
   void _showMainAssignSheet() {
     showModalBottomSheet(
@@ -225,7 +249,7 @@ class _CreatefollowupsscreenState extends State<Createfollowupsscreen> {
       backgroundColor: AppColor.bgLight,
       appBar: AppBar(
         leading: const BackButton(),
-        toolbarHeight: 120,
+        toolbarHeight: 300,
         elevation: 1,
         backgroundColor: Colors.transparent,
         flexibleSpace: Container(
@@ -386,8 +410,8 @@ class _CreatefollowupsscreenState extends State<Createfollowupsscreen> {
                       color: AppColor.primary,
                     ),
                     width: double.infinity,
-                    labelText: 'Start Date',
-                    control: startDateController,
+                    labelText: 'Reminder Date',
+                    control: followDateController,
                     readOnly: true, // Prevent manual typing
                     onTap: () async {
                       FocusScope.of(
@@ -396,15 +420,15 @@ class _CreatefollowupsscreenState extends State<Createfollowupsscreen> {
 
                       DateTime? picked = await showDatePicker(
                         context: context,
-                        initialDate: startDate ?? DateTime.now(),
+                        initialDate: folowDate ?? DateTime.now(),
                         firstDate: DateTime(2000),
                         lastDate: DateTime(2100),
                       );
 
                       if (picked != null) {
                         setState(() {
-                          startDate = picked;
-                          startDateController.text =
+                          folowDate = picked;
+                          followDateController.text =
                               "${picked.day.toString().padLeft(2, '0')}-${picked.month.toString().padLeft(2, '0')}-${picked.year}";
                         });
                       }
@@ -419,7 +443,7 @@ class _CreatefollowupsscreenState extends State<Createfollowupsscreen> {
                       color: AppColor.primary,
                     ),
                     width: double.infinity,
-                    labelText: 'Start Time',
+                    labelText: 'Reminder Time',
                     control: startTimeController,
                     readOnly: true,
                     onTap: () async {
@@ -466,21 +490,20 @@ class _CreatefollowupsscreenState extends State<Createfollowupsscreen> {
                 ),
               ],
             ),
-                  Column(
+            Column(
               children: [
                 // Header
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                 
-                        Text(
-                  "Assigned To",
-                  style: TextStyle(
-                    color: AppColor.mainColor,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
+                    Text(
+                      "Assigned To",
+                      style: TextStyle(
+                        color: AppColor.mainColor,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
                     IconButton(
                       icon: Icon(Icons.add),
                       onPressed: _showMainAssignSheet,
@@ -542,8 +565,6 @@ class _CreatefollowupsscreenState extends State<Createfollowupsscreen> {
                     : SizedBox.shrink(),
               ],
             ),
-
-     
 
             CustomRoundedTextField(
               width: double.infinity,
