@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../constant/app_color.dart';
 import '../../widgets/custom_textfield.dart';
+import '../dashboard.dart';
 
 class Deleteaccountscreen extends StatefulWidget {
   const Deleteaccountscreen({super.key});
@@ -276,7 +277,10 @@ class _DeleteaccountscreenState extends State<Deleteaccountscreen> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                   
+                      Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Dashboard()),
+                  );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColor.actionColor,

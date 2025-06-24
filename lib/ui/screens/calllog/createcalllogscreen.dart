@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../constant/app_color.dart';
 import '../../widgets/custom_dropdown.dart';
 import '../../widgets/custom_textfield.dart';
+import '../dashboard.dart';
 
 class Createcalllogscreen extends StatefulWidget {
   const Createcalllogscreen({super.key});
@@ -237,7 +238,12 @@ class _CreatecalllogscreenState extends State<Createcalllogscreen> {
         ),
         actions: [
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Dashboard()),
+                  );
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColor.primary,
               shape: RoundedRectangleBorder(

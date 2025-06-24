@@ -6,6 +6,7 @@ import '../../constant/app_color.dart';
 import '../../widgets/custom_dropdown.dart';
 import '../../widgets/custom_textfield.dart';
 import '../customers/createcustomerscreen.dart';
+import '../dashboard.dart';
 
 class Createenquirescreen extends StatefulWidget {
   const Createenquirescreen({super.key});
@@ -244,7 +245,13 @@ class _CreateenquirescreenState extends State<Createenquirescreen> {
         ),
         actions: [
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+               Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => Dashboard()),
+      
+    );
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColor.primary,
               shape: RoundedRectangleBorder(

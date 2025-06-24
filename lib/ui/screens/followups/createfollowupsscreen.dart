@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../constant/app_color.dart';
 import '../../widgets/custom_dropdown.dart';
 import '../../widgets/custom_textfield.dart';
+import '../dashboard.dart';
 
 class Createfollowupsscreen extends StatefulWidget {
   const Createfollowupsscreen({super.key});
@@ -249,7 +250,7 @@ class _CreatefollowupsscreenState extends State<Createfollowupsscreen> {
       backgroundColor: AppColor.bgLight,
       appBar: AppBar(
         leading: const BackButton(),
-        toolbarHeight: 300,
+        toolbarHeight: 120,
         elevation: 1,
         backgroundColor: Colors.transparent,
         flexibleSpace: Container(
@@ -271,7 +272,12 @@ class _CreatefollowupsscreenState extends State<Createfollowupsscreen> {
         ),
         actions: [
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+                 Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Dashboard()),
+                  );
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColor.primary,
               shape: RoundedRectangleBorder(

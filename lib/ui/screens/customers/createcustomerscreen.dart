@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../constant/constant.dart';
 import '../../widgets/custom_dropdown.dart';
 import '../../widgets/custom_textfield.dart';
+import '../dashboard.dart';
 
 class CreatecustomerScreen extends StatefulWidget {
   const CreatecustomerScreen({super.key});
@@ -599,7 +600,12 @@ class _CreatecustomerScreenState extends State<CreatecustomerScreen> {
         ),
         actions: [
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+                 Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Dashboard()),
+                  );
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColor.primary,
               shape: RoundedRectangleBorder(

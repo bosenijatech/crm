@@ -4,6 +4,7 @@ import '../../constant/constant.dart';
 
 import '../../widgets/custom_dropdown.dart';
 import '../../widgets/custom_textfield.dart';
+import '../dashboard.dart';
 
 class Createtaskscreen extends StatefulWidget {
   const Createtaskscreen({super.key});
@@ -278,7 +279,12 @@ class _CreatetaskscreenState extends State<Createtaskscreen> {
         ),
         actions: [
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Dashboard()),
+                  );
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColor.primary,
               shape: RoundedRectangleBorder(

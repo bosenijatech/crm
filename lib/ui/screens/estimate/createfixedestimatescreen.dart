@@ -5,6 +5,7 @@ import '../../constant/constant.dart';
 import '../../widgets/custom_dropdown.dart';
 import '../../widgets/custom_textfield.dart';
 import '../customers/createcustomerscreen.dart';
+import '../dashboard.dart';
 
 class Createfixedestimatescreen extends StatefulWidget {
   const Createfixedestimatescreen({super.key});
@@ -93,7 +94,12 @@ class _CreatefixedestimatescreenState extends State<Createfixedestimatescreen> {
         ),
         actions: [
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+                 Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Dashboard()),
+                  );
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColor.primary,
               shape: RoundedRectangleBorder(

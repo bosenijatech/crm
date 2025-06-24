@@ -11,6 +11,8 @@ import '../../widgets/custom_textfield.dart';
 import '../customers/createcustomerscreen.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../dashboard.dart';
+
 class Createexpensereportscreen extends StatefulWidget {
   const Createexpensereportscreen({super.key});
 
@@ -189,7 +191,12 @@ class _CreateexpensereportscreenState extends State<Createexpensereportscreen> {
         ),
         actions: [
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+                 Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Dashboard()),
+                  );
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColor.primary,
               shape: RoundedRectangleBorder(

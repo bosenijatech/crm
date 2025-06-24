@@ -13,6 +13,8 @@ import 'package:image_picker/image_picker.dart';
 
 import 'package:permission_handler/permission_handler.dart';
 
+import '../dashboard.dart';
+
 class Createestimatescreen extends StatefulWidget {
   const Createestimatescreen({super.key});
 
@@ -509,7 +511,12 @@ void showImagePickerOptions() {
         ),
         actions: [
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+                 Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Dashboard()),
+                  );
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColor.primary,
               shape: RoundedRectangleBorder(
