@@ -1,4 +1,6 @@
+import 'package:crm/ui/screens/followups/followupshomescreen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../constant/app_color.dart';
 import '../../widgets/custom_dropdown.dart';
@@ -273,10 +275,7 @@ class _CreatefollowupsscreenState extends State<Createfollowupsscreen> {
         actions: [
           ElevatedButton(
             onPressed: () {
-                 Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Dashboard()),
-                  );
+          Get.to(() => Followupshomescreen());
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColor.primary,

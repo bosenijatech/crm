@@ -1,5 +1,7 @@
 import 'package:country_picker/country_picker.dart';
+import 'package:crm/ui/screens/contact/contacthomescreen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../constant/app_color.dart';
 import '../../widgets/custom_dropdown.dart';
@@ -426,10 +428,7 @@ class _CreatecontactscreenState extends State<Createcontactscreen> {
         actions: [
           ElevatedButton(
             onPressed: () {
-                 Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Dashboard()),
-                  );
+               Get.to(() => Contacthomescreen());
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColor.primary,

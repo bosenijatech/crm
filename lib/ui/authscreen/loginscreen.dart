@@ -1,7 +1,8 @@
 import 'package:crm/ui/constant/app_color.dart';
 import 'package:crm/ui/screens/dashboard.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../widgets/textfieldcontainer.dart';
@@ -27,7 +28,7 @@ Future<void> login() async {
     if (emailController.text == "admin" && passwordController.text == "1234") {
       await prefs.setBool('isLoggedIn', true);
       if (!mounted) return;
-      GoRouter.of(context).go('/dashboard');
+     Get.offNamed('/dashboard');
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Invalid credentials')),

@@ -1,7 +1,8 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LandingScreen extends StatefulWidget {
@@ -26,9 +27,9 @@ class _LandingScreenState extends State<LandingScreen> {
       if (!mounted) return;
 
       if (isLoggedIn) {
-        GoRouter.of(context).go('/dashboard');
+      Get.offNamed('/dashboard');
       } else {
-        GoRouter.of(context).go('/login');
+       Get.offNamed('/login');
       }
     });
   }

@@ -1,6 +1,7 @@
 import 'package:crm/ui/screens/dashboard.dart';
 import 'package:crm/ui/screens/leads/leadshomescreen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../constant/app_color.dart';
 import 'leadformpagefive.dart';
@@ -88,11 +89,8 @@ class _CreateLeadScreenState extends State<CreateLeadScreen> {
           else
             ElevatedButton(
               onPressed: (){
-                  Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => Dashboard()),
-      
-    );
+     Get.off(() => Leadshomescreen());
+
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF243D87),

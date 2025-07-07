@@ -1,4 +1,6 @@
+import 'package:crm/ui/screens/calllog/callloghomescreen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../constant/app_color.dart';
 import '../../widgets/custom_dropdown.dart';
@@ -239,10 +241,7 @@ class _CreatecalllogscreenState extends State<Createcalllogscreen> {
         actions: [
           ElevatedButton(
             onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Dashboard()),
-                  );
+          Get.to(() => Callloghomescreen());
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColor.primary,

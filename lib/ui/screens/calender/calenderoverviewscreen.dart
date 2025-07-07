@@ -5,14 +5,14 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../constant/app_assets.dart';
 import '../../constant/app_color.dart';
 
-class Cleanderoverviewscreen extends StatefulWidget {
-  const Cleanderoverviewscreen({super.key});
+class Calenderoverviewscreen extends StatefulWidget {
+  const Calenderoverviewscreen({super.key});
 
   @override
-  State<Cleanderoverviewscreen> createState() => _CleanderoverviewscreenState();
+  State<Calenderoverviewscreen> createState() => _CalenderoverviewscreenState();
 }
 
-class _CleanderoverviewscreenState extends State<Cleanderoverviewscreen> {
+class _CalenderoverviewscreenState extends State<Calenderoverviewscreen> {
   List<Map<String, String>> eventinfo = [
     {"left": "Title", "right": ""},
     {"left": "Location", "right": ""},

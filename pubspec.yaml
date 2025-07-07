@@ -40,7 +40,6 @@ dependencies:
   flutter_svg: ^2.1.0
   dropdown_search: ^5.0.2
   country_picker: ^2.0.27
-  go_router: ^15.1.3
   flutter_speed_dial: ^7.0.0
   image_picker: ^1.1.2
   permission_handler: ^12.0.0+1

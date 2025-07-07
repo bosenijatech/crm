@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 import '../../constant/app_assets.dart';
 import '../../constant/app_color.dart';
@@ -246,11 +247,8 @@ class _CreateenquirescreenState extends State<Createenquirescreen> {
         actions: [
           ElevatedButton(
             onPressed: () {
-               Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => Dashboard()),
-      
-    );
+              Get.offNamed('/enquirehome');
+
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColor.primary,

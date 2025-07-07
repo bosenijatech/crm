@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:crm/ui/screens/dashboard.dart';
+import 'package:crm/ui/screens/leads/leadshomescreen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -100,10 +100,7 @@ class _CreateWorkorderScreenState extends State<CreateWorkorderScreen> {
             else
               ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Dashboard()),
-                  );
+                  Get.to(() => Leadshomescreen());
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF243D87),

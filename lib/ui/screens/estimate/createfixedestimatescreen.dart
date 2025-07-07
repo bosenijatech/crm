@@ -1,4 +1,6 @@
+import 'package:crm/ui/screens/estimate/estimatehomescreen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../constant/constant.dart';
 
@@ -95,10 +97,7 @@ class _CreatefixedestimatescreenState extends State<Createfixedestimatescreen> {
         actions: [
           ElevatedButton(
             onPressed: () {
-                 Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Dashboard()),
-                  );
+                 Get.to(() => Estimatehomescreen());
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColor.primary,

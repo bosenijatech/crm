@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+
 
 import '../../constant/constant.dart';
 
 import '../../widgets/custom_dropdown.dart';
 import '../../widgets/custom_textfield.dart';
 import '../dashboard.dart';
+import '../leads/leadshomescreen.dart';
 
-class Createcalendaerscreen extends StatefulWidget {
-  const Createcalendaerscreen({super.key});
+class Createcalenderscreen extends StatefulWidget {
+  const Createcalenderscreen({super.key});
 
   @override
-  State<Createcalendaerscreen> createState() => _CreatecalendaerscreenState();
+  State<Createcalenderscreen> createState() => _CreatecalenderscreenState();
 }
 
-class _CreatecalendaerscreenState extends State<Createcalendaerscreen> {
+class _CreatecalenderscreenState extends State<Createcalenderscreen> {
   final TextEditingController titleController = TextEditingController();
   final TextEditingController notesController = TextEditingController();
   TextEditingController locationController = TextEditingController();
@@ -269,11 +273,7 @@ class _CreatecalendaerscreenState extends State<Createcalendaerscreen> {
         actions: [
           ElevatedButton(
             onPressed: () {
-               Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => Dashboard()),
-      
-    );
+         Get.off(() => Leadshomescreen());
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColor.primary,

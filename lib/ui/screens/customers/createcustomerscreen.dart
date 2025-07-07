@@ -1,5 +1,7 @@
 import 'package:country_picker/country_picker.dart';
+import 'package:crm/ui/screens/customers/customerhomescreen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../constant/constant.dart';
 import '../../widgets/custom_dropdown.dart';
@@ -601,10 +603,8 @@ class _CreatecustomerScreenState extends State<CreatecustomerScreen> {
         actions: [
           ElevatedButton(
             onPressed: () {
-                 Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Dashboard()),
-                  );
+                Get.to(() => Customerhomescreen());
+
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColor.primary,

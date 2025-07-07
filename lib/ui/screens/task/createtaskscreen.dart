@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
 
+import 'package:crm/ui/screens/task/taskhomescreen.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../constant/constant.dart';
 
 import '../../widgets/custom_dropdown.dart';
@@ -280,10 +282,7 @@ class _CreatetaskscreenState extends State<Createtaskscreen> {
         actions: [
           ElevatedButton(
             onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Dashboard()),
-                  );
+             Get.to(() => Taskhomescreen());
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColor.primary,

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:crm/ui/screens/Expense/expensehomescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -192,10 +193,7 @@ class _CreateexpensereportscreenState extends State<Createexpensereportscreen> {
         actions: [
           ElevatedButton(
             onPressed: () {
-                 Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Dashboard()),
-                  );
+               Get.to(() => Expensehomescreen());
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColor.primary,

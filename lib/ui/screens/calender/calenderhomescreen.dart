@@ -4,21 +4,21 @@ import 'package:get/get.dart';
 
 import '../../constant/app_assets.dart';
 import '../../constant/app_color.dart';
-import 'createfollowupsscreen.dart';
-import 'followupsoverviewscreen.dart';
+import 'calenderoverviewscreen.dart';
+import 'createcalenderscreen.dart';
 
-
-class Followupshomescreen extends StatefulWidget {
-  const Followupshomescreen({super.key});
+class Calenderhomescreen extends StatefulWidget {
+  const Calenderhomescreen({super.key});
 
   @override
-  State<Followupshomescreen> createState() => _FollowupshomescreenState();
+  State<Calenderhomescreen> createState() => _CalenderhomescreenState();
 }
 
-class _FollowupshomescreenState extends State<Followupshomescreen> {
-     final List<String> items = [
+class _CalenderhomescreenState extends State<Calenderhomescreen> {
+   final List<String> items = [
     "Item 1", "Item 2", "Item 3", "Item 4", "Item 5"
   ];
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -28,7 +28,7 @@ class _FollowupshomescreenState extends State<Followupshomescreen> {
       return false;
     },
       child: Scaffold(
-        backgroundColor: AppColor.bgLight,
+            backgroundColor: AppColor.bgLight,
         appBar: AppBar(
           toolbarHeight: 120,
           elevation: 1,
@@ -46,7 +46,7 @@ class _FollowupshomescreenState extends State<Followupshomescreen> {
             ),
           ),
           title: Text(
-            "Follow Ups",
+            "Calendar",
             style: TextStyle(
               color: AppColor.mainColor,
               fontSize: 20,
@@ -76,8 +76,8 @@ class _FollowupshomescreenState extends State<Followupshomescreen> {
             ),
           ],
         ),
-        body:
-           ListView.builder(
+        body: 
+        ListView.builder(
       
          shrinkWrap: true,
              itemCount: items.length,
@@ -91,7 +91,7 @@ class _FollowupshomescreenState extends State<Followupshomescreen> {
                            Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => Followupsoverviewscreen(),
+                      builder: (context) => Calenderoverviewscreen(),
                     ),
                   );
                       },
@@ -201,7 +201,7 @@ class _FollowupshomescreenState extends State<Followupshomescreen> {
           onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Createfollowupsscreen()),
+                MaterialPageRoute(builder: (context) => Createcalenderscreen()),
               );
           },
            shape: const CircleBorder(),
@@ -212,6 +212,7 @@ class _FollowupshomescreenState extends State<Followupshomescreen> {
             color: AppColor.primary,
           ),
         ),
+      
       ),
     );
   }

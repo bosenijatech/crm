@@ -1,12 +1,14 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../constant/constant.dart';
 import '../../widgets/custom_dropdown.dart';
 import '../../widgets/custom_textfield.dart';
 import '../dashboard.dart';
+import 'expensehomescreen.dart';
 
 
 class Createexpensescreen extends StatefulWidget {
@@ -160,10 +162,7 @@ class _CreateexpensescreenState extends State<Createexpensescreen> {
         actions: [
           ElevatedButton(
             onPressed: () {
-                 Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Dashboard()),
-                  );
+                Get.to(() => Expensehomescreen());
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColor.primary,

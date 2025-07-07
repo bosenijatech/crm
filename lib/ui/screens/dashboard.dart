@@ -6,13 +6,14 @@ import 'package:crm/ui/screens/leads/leadshomescreen.dart';
 import 'package:crm/ui/screens/workorder/workorderhomescree.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../constant/app_color.dart';
 import '../constant/constant.dart';
 import 'Expense/expensehomescreen.dart';
-import 'calender/callenderhomescreen.dart';
+import 'calender/calenderhomescreen.dart';
 import 'calllog/callloghomescreen.dart';
 import 'contact/contacthomescreen.dart';
 import 'email/emailscreen.dart';
@@ -50,6 +51,14 @@ class _DashboardState extends State<Dashboard>
       begin: Offset(-1, 0),
       end: Offset(0, 0),
     ).animate(_controller);
+
+      // 👇 Open drawer if flag is set
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    final args = ModalRoute.of(context)?.settings.arguments;
+    if (args is Map && args['openDrawer'] == true && !isDrawerOpen) {
+      toggleDrawer();
+    }
+  });
   }
 
   void toggleDrawer() {
@@ -74,7 +83,7 @@ class _DashboardState extends State<Dashboard>
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool('isLoggedIn', false);
 
-    GoRouter.of(context).go('/login');
+  Get.offNamed('/login');
   }
 
   //menu items
@@ -86,7 +95,7 @@ class _DashboardState extends State<Dashboard>
       "icon": AppAssets.enquiry,
       "screen": Enquiriehomescreen(),
     },
-    {"title": "Calendar", "icon": AppAssets.calendar, "screen": Callenderhomescreen()},
+    {"title": "Calendar", "icon": AppAssets.calendar, "screen": Calenderhomescreen()},
     {
       "title": "Work Order",
       "icon": AppAssets.workorder,

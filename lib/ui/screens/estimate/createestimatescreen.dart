@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:crm/ui/screens/estimate/estimatehomescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,9 +12,6 @@ import '../../widgets/custom_textfield.dart';
 import '../customers/createcustomerscreen.dart';
 import 'package:image_picker/image_picker.dart';
 
-import 'package:permission_handler/permission_handler.dart';
-
-import '../dashboard.dart';
 
 class Createestimatescreen extends StatefulWidget {
   const Createestimatescreen({super.key});
@@ -512,10 +510,7 @@ void showImagePickerOptions() {
         actions: [
           ElevatedButton(
             onPressed: () {
-                 Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Dashboard()),
-                  );
+               Get.to(() => Estimatehomescreen());
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColor.primary,
